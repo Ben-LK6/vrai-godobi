@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "bmewburn.vscode-intelephense-client",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "formulahendry.auto-rename-tag",
+    "bradlc.vscode-tailwindcss",
+    "PKief.material-icon-theme",
+    "GitHub.copilot",
+    "rangav.vscode-thunder-client",
+    "cweijan.vscode-mysql-client2"
+  ]
+}

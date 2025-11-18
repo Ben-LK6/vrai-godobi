@@ -1,0 +1,29 @@
+.
+├── backend
+│   ├── bootstrap
+│   │   └── app.php
+│   └── composer.json
+├── database
+│   └── schema.sql
+├── docs
+│   ├── architecture.md
+│   ├── cahier-des-charges.md
+│   ├── development-plan.md
+│   └── QUICKSTART.md
+├── LICENSE
+├── mobile
+│   ├── app.json
+│   └── package.json
+├── NEXT_STEPS.md
+├── PROJECT_STRUCTURE.txt
+├── README.md
+├── scripts
+│   ├── setup-backend.sh
+│   ├── setup-mobile.sh
+│   └── setup-web.sh
+└── web
+    ├── next.config.js
+    ├── package.json
+    └── tailwind.config.js
+
+8 directories, 19 files

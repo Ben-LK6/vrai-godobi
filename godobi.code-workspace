@@ -1,0 +1,46 @@
+{
+  "folders": [
+    {
+      "name": "🎯 GODOBI Root",
+      "path": "."
+    },
+    {
+      "name": "🔧 Backend (Laravel)",
+      "path": "./backend"
+    },
+    {
+      "name": "📱 Mobile (React Native)",
+      "path": "./mobile"
+    },
+    {
+      "name": "🌐 Web (Next.js)",
+      "path": "./web"
+    },
+    {
+      "name": "📚 Documentation",
+      "path": "./docs"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/vendor": true,
+      "**/.git": false
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/vendor": true,
+      "**/dist": true,
+      "**/build": true
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[php]": {
+      "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+    "files.associations": {
+      "*.env.example": "dotenv",
+      ".env.local": "dotenv"
+    }
+  }
+}

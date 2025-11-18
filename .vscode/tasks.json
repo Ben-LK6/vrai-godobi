@@ -1,0 +1,150 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🚀 Backend: Démarrer serveur Laravel",
+      "type": "shell",
+      "command": "cd backend && php artisan serve",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "group": "build"
+    },
+    {
+      "label": "📱 Mobile: Démarrer Expo",
+      "type": "shell",
+      "command": "cd mobile && npx expo start",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "group": "build"
+    },
+    {
+      "label": "🌐 Web: Démarrer Next.js",
+      "type": "shell",
+      "command": "cd web && npm run dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "group": "build"
+    },
+    {
+      "label": "🔄 Backend: Migrations",
+      "type": "shell",
+      "command": "cd backend && php artisan migrate",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🧹 Backend: Cache Clear",
+      "type": "shell",
+      "command": "cd backend && php artisan cache:clear && php artisan config:clear && php artisan route:clear",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📦 Backend: Composer Install",
+      "type": "shell",
+      "command": "cd backend && composer install",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📦 Mobile: NPM Install",
+      "type": "shell",
+      "command": "cd mobile && npm install",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📦 Web: NPM Install",
+      "type": "shell",
+      "command": "cd web && npm install",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🗄️ Database: Créer base de données",
+      "type": "shell",
+      "command": "mysql -u root -p -e 'CREATE DATABASE IF NOT EXISTS godobi;'",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🗄️ Database: Importer schéma",
+      "type": "shell",
+      "command": "mysql -u root -p godobi < database/schema.sql",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🚀 GODOBI: Tout démarrer",
+      "dependsOn": [
+        "🚀 Backend: Démarrer serveur Laravel",
+        "📱 Mobile: Démarrer Expo",
+        "🌐 Web: Démarrer Next.js"
+      ],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
