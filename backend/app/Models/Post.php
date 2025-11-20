@@ -15,6 +15,7 @@ class Post extends Model
         'content',
         'type',
         'media_urls',
+        'image_url', // ✅ AJOUT : Support pour image unique (IA)
         'visibility',
         'hashtags',
         'mentions',

@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -10,33 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    /**
-     * Display feed of posts
-     */
-    public function feed(Request $request)
-    {
-        $user = $request->user();
-        
-        $posts = Post::with(['user', 'comments.user', 'likes'])
-            ->where('visibility', 'public')
-            ->orWhere(function($query) use ($user) {
-                $query->where('user_id', $user->id);
-            })
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-
-        // Add is_liked flag for each post
-        $posts->getCollection()->transform(function ($post) use ($user) {
-            $post->is_liked = $post->likes()->where('user_id', $user->id)->exists();
-            return $post;
-        });
-
-        return response()->json([
-            'success' => true,
-            'data' => $posts
-        ]);
-    }
-
     /**
      * Display a listing of posts (feed)
      */
