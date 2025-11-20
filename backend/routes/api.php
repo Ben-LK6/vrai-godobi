@@ -129,6 +129,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/ai/prompts/templates/{id}/use', [AiController::class, 'useTemplate']);
     Route::get('/ai/stats', [AiController::class, 'getUserStats']);
     
+    // Games routes
+    Route::post('/games/invite', [\App\Http\Controllers\Api\GameController::class, 'invite']);
+    Route::post('/games/invitations/{id}/accept', [\App\Http\Controllers\Api\GameController::class, 'accept']);
+    Route::post('/games/invitations/{id}/decline', [\App\Http\Controllers\Api\GameController::class, 'decline']);
+    Route::get('/games/invitations', [\App\Http\Controllers\Api\GameController::class, 'getInvitations']);
+    Route::get('/games/{id}', [\App\Http\Controllers\Api\GameController::class, 'show']);
+    Route::post('/games/{id}/cancel', [\App\Http\Controllers\Api\GameController::class, 'cancel']);
+    
     // Legacy route for compatibility
     Route::get('/user', function (Request $request) {
         return $request->user();
