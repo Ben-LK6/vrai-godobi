@@ -117,4 +117,33 @@ class GameController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Game cancelled']);
     }
+
+    public function finish(Request $request, $gameId)
+    {
+        $game = Game::findOrFail($gameId);
+        
+        // Check if user is part of this game
+        $userId = $request->user()->id;
+        if ($game->creator_id !== $userId && $game->opponent_id !== $userId) {
+            return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'winner_id' => 'required|exists:users,id',
+            'game_data' => 'required|array',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+        }
+
+        $game->update([
+            'status' => 'finished',
+            'winner_id' => $request->winner_id,
+            'game_data' => $request->game_data,
+            'finished_at' => now(),
+        ]);
+
+        return response()->json(['success' => true, 'game' => $game]);
+    }
 }

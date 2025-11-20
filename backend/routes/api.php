@@ -136,6 +136,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/games/invitations', [\App\Http\Controllers\Api\GameController::class, 'getInvitations']);
     Route::get('/games/{id}', [\App\Http\Controllers\Api\GameController::class, 'show']);
     Route::post('/games/{id}/cancel', [\App\Http\Controllers\Api\GameController::class, 'cancel']);
+    Route::post('/games/{id}/finish', [\App\Http\Controllers\Api\GameController::class, 'finish']);
     
     // Legacy route for compatibility
     Route::get('/user', function (Request $request) {
