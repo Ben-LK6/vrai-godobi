@@ -134,9 +134,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/games/invitations/{id}/accept', [\App\Http\Controllers\Api\GameController::class, 'accept']);
     Route::post('/games/invitations/{id}/decline', [\App\Http\Controllers\Api\GameController::class, 'decline']);
     Route::get('/games/invitations', [\App\Http\Controllers\Api\GameController::class, 'getInvitations']);
+    Route::get('/games/pending', [\App\Http\Controllers\Api\GameController::class, 'checkPendingGames']);
     Route::get('/games/{id}', [\App\Http\Controllers\Api\GameController::class, 'show']);
     Route::post('/games/{id}/cancel', [\App\Http\Controllers\Api\GameController::class, 'cancel']);
     Route::post('/games/{id}/finish', [\App\Http\Controllers\Api\GameController::class, 'finish']);
+    
+    // Multiplayer game routes
+    Route::post('/games/{id}/answer', [\App\Http\Controllers\Api\GameController::class, 'submitAnswer']);
+    Route::get('/games/{id}/state', [\App\Http\Controllers\Api\GameController::class, 'getGameState']);
+    Route::get('/games/{id}/results', [\App\Http\Controllers\Api\GameController::class, 'getGameResults']);
+    
+    // Forfeit routes
+    Route::post('/games/{id}/forfeit/request', [\App\Http\Controllers\Api\GameController::class, 'requestForfeit']);
+    Route::post('/games/{id}/forfeit/respond', [\App\Http\Controllers\Api\GameController::class, 'respondToForfeit']);
+    Route::post('/games/{id}/forfeit/cancel', [\App\Http\Controllers\Api\GameController::class, 'cancelForfeit']);
     
     // Legacy route for compatibility
     Route::get('/user', function (Request $request) {
